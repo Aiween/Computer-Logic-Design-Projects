@@ -1,0 +1,246 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1000.0;
+	SIMULATION_TIME = 1000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("Clock")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("D")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Q")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = BIDIR;
+	PARENT = "";
+}
+
+SIGNAL("Q~result")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+TRANSITION_LIST("Clock")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 20;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
+		}
+		LEVEL 0 FOR 800.0;
+	}
+}
+
+TRANSITION_LIST("D")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 8.0;
+		LEVEL 1 FOR 13.0;
+		LEVEL 0 FOR 7.0;
+		LEVEL 1 FOR 4.0;
+		LEVEL 0 FOR 14.0;
+		LEVEL 1 FOR 154.0;
+		LEVEL 0 FOR 800.0;
+	}
+}
+
+TRANSITION_LIST("Q")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 5.0;
+		LEVEL Z FOR 995.0;
+	}
+}
+
+TRANSITION_LIST("Q~result")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 5.0;
+		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 30.0;
+		LEVEL 1 FOR 945.0;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Clock";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "D";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+	COMMENT
+	{
+		TIME = 5100;
+		RISE = 89;
+		RUN = 20;
+		TEXT = "d=0";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+	COMMENT
+	{
+		TIME = 14899;
+		RISE = 112;
+		RUN = 8;
+		TEXT = "D=1";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+	COMMENT
+	{
+		TIME = 25000;
+		RISE = 89;
+		RUN = -1;
+		TEXT = "D=0";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+	COMMENT
+	{
+		TIME = 35100;
+		RISE = 82;
+		RUN = -1;
+		TEXT = "D=0";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+	COMMENT
+	{
+		TIME = 45000;
+		RISE = 84;
+		RUN = -3;
+		TEXT = "D=0";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+	COMMENT
+	{
+		TIME = 55100;
+		RISE = 104;
+		RUN = -1;
+		TEXT = "D=1";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Q";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Q~result";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 0;
+	COMMENT
+	{
+		TIME = 2100;
+		RISE = 134;
+		RUN = 265;
+		TEXT = "D FLIP FLOP captures the value of D at the rising edge of the clock. the value is output Q until the next clock pulse.. ";
+		FONT_NAME = "Arial";
+		FONT_SIZE = 8;
+		FONT_STYLE = "Regular";
+		FONT_COLOR = 0;
+	}
+}
+
+TIME_BAR
+{
+	TIME = 60000;
+	MASTER = TRUE;
+}
+;
